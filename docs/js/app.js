@@ -7,6 +7,20 @@
   const photoById = new Map(photos.map((p) => [p.id, p]));
   const collectionById = new Map(collections.map((c) => [c.id, c]));
 
+  // ---------- secret locations flag ----------
+  // Map view is hidden by default. To reveal it, run in the browser console:
+  //   localStorage.setItem("walls:showLocations", "true")
+  // then reload the page.
+  const LOCATIONS_FLAG_KEY = "walls:showLocations";
+  if (localStorage.getItem(LOCATIONS_FLAG_KEY) === null) {
+    localStorage.setItem(LOCATIONS_FLAG_KEY, "false");
+  }
+  const locationsEnabled = localStorage.getItem(LOCATIONS_FLAG_KEY) === "true";
+  const mapTabBtn = document.querySelector('.tab-btn[data-view="map"]');
+  if (!locationsEnabled && mapTabBtn) {
+    mapTabBtn.style.display = "none";
+  }
+
   // ---------- tabs ----------
   const tabBtns = document.querySelectorAll(".tab-btn");
   const views = document.querySelectorAll(".view");

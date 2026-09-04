@@ -146,6 +146,9 @@ button[type="submit"], #edit-save {
   display: flex; align-items: center; justify-content: center; z-index: 50; padding: 1.5rem;
   overflow-y: auto;
 }
+.modal[hidden] {
+  display: none;
+}
 .modal-content {
   background: var(--bg);
   border: 1px solid var(--border);

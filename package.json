@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "migrate": "node scripts/migrate.js"
+    "migrate": "node scripts/migrate.js",
+    "admin:install": "npm install --prefix admin",
+    "admin": "npm start --prefix admin"
   },
   "dependencies": {
     "sharp": "^0.33.5"

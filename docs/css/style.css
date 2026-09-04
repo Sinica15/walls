@@ -113,6 +113,10 @@ main { padding: 1rem; }
   font-size: 0.9rem;
 }
 
+.filter-bar[hidden] {
+  display: none;
+}
+
 .filter-bar button {
   background: none;
   border: 1px solid var(--border);
@@ -142,6 +146,10 @@ main { padding: 1rem; }
   align-items: center;
   justify-content: center;
   padding: 2rem;
+}
+
+.lightbox[hidden] {
+  display: none;
 }
 
 .lightbox-content {
