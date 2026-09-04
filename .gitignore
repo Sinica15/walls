@@ -1,0 +1,14 @@
+# Raw source dump — contains real user emails, never publish
+/s3-photos/
+/dynamodb/
+/s3-sync.log
+
+# Node
+node_modules/
+admin/node_modules/
+npm-debug.log*
+npm-install.log
+admin/npm-install.log
+
+# OS
+.DS_Store

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walls Admin</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Walls Admin</h1>
+    <nav class="tabs">
+      <button class="tab-btn active" data-view="photos">Photos</button>
+      <button class="tab-btn" data-view="add">Add photo</button>
+      <button class="tab-btn" data-view="collections">Collections</button>
+    </nav>
+    <div class="publish-box">
+      <input id="publish-message" type="text" placeholder="Commit message" />
+      <button id="publish-btn">Publish to GitHub Pages</button>
+      <span id="publish-status"></span>
+    </div>
+  </header>
+
+  <main>
+    <section id="view-photos" class="view active">
+      <div id="photos-grid" class="grid"></div>
+    </section>
+
+    <section id="view-add" class="view">
+      <form id="add-form">
+        <label>Photo file
+          <input type="file" id="add-file" accept="image/*" required />
+        </label>
+        <div id="add-preview"></div>
+        <label>Description
+          <input type="text" id="add-description" placeholder="optional" />
+        </label>
+        <div class="coords-row">
+          <label>Lat <input type="number" step="any" id="add-lat" required /></label>
+          <label>Lon <input type="number" step="any" id="add-lon" required /></label>
+        </div>
+        <p class="hint">Click the map to set location</p>
+        <div id="add-map"></div>
+        <label>Collections</label>
+        <div id="add-collections" class="checkbox-list"></div>
+        <button type="submit">Add photo</button>
+        <span id="add-status"></span>
+      </form>
+    </section>
+
+    <section id="view-collections" class="view">
+      <form id="new-collection-form" class="inline-form">
+        <input type="text" id="new-collection-name" placeholder="New collection name" required />
+        <button type="submit">Create</button>
+      </form>
+      <div id="collections-list"></div>
+    </section>
+  </main>
+
+  <div id="edit-modal" class="modal" hidden>
+    <div class="modal-content">
+      <button class="modal-close" id="edit-close">✕</button>
+      <img id="edit-img" src="" alt="" />
+      <label>Description <input type="text" id="edit-description" /></label>
+      <div class="coords-row">
+        <label>Lat <input type="number" step="any" id="edit-lat" /></label>
+        <label>Lon <input type="number" step="any" id="edit-lon" /></label>
+      </div>
+      <div id="edit-map"></div>
+      <label>Collections</label>
+      <div id="edit-collections" class="checkbox-list"></div>
+      <div class="modal-actions">
+        <button id="edit-save">Save</button>
+        <button id="edit-delete" class="danger">Delete photo</button>
+      </div>
+      <span id="edit-status"></span>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
