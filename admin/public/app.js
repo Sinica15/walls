@@ -7,6 +7,7 @@
       fetch("/api/photos").then((r) => r.json()),
       fetch("/api/collections").then((r) => r.json()),
     ]);
+    photos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   }
 
   // ---------- tabs ----------

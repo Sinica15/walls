@@ -4,6 +4,8 @@
     fetch("data/collections.json").then((r) => r.json()),
   ]);
 
+  photos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   const photoById = new Map(photos.map((p) => [p.id, p]));
   const collectionById = new Map(collections.map((c) => [c.id, c]));
 
@@ -65,7 +67,9 @@
     if (!col) return;
     filterBar.hidden = false;
     filterLabel.textContent = `Collection: ${col.name} (${col.postIds.length})`;
-    renderGallery(col.postIds.map((id) => photoById.get(id)).filter(Boolean));
+    const colPhotos = col.postIds.map((id) => photoById.get(id)).filter(Boolean);
+    colPhotos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    renderGallery(colPhotos);
     tabBtns.forEach((b) => b.classList.remove("active"));
     views.forEach((v) => v.classList.remove("active"));
     document.querySelector('[data-view="gallery"]').classList.add("active");
